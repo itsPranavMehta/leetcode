@@ -17,7 +17,7 @@ public:
             int package_idx=0;
             long spaceWasted=0;
             
-            for(int idx=0;idx<seller.size() &&package_idx<packages.size();idx++){
+            for(int idx=0;idx<seller.size() && package_idx<packages.size();idx++){
                 auto ub=upper_bound(packages.begin(),packages.end(),seller[idx]);
                 
                 if(ub!=packages.begin()){
