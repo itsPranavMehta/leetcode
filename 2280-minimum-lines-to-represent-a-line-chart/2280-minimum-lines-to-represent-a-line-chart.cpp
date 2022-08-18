@@ -1,8 +1,11 @@
 class Solution {
+    private:
+    
     pair<int,int> calculateSlope(int y2, int y1, int x2,int x1){
         int g =__gcd(abs(y2-y1),abs(x2-x1));
         return {(y2-y1)/g,(x2-x1)/g};
     }
+    
 public:
     int minimumLines(vector<vector<int>>& stockPrices) {
         if(stockPrices.size()<2)    return 0;
