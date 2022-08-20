@@ -8,7 +8,6 @@ public:
             }
         }
         int i=3;
-        if(answer.size()<4) return answer;
         if(answer.size()<5) i=2;
         while((i<=(int)answer.size()-6) || (i==(int)answer.size()-5) || (i==(int)answer.size()-3)){
             answer.insert(i,1,'-');
