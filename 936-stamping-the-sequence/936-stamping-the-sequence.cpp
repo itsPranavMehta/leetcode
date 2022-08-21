@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<int> movesToStamp(string stamp, string target) {
+        //adding comment in leethub
+        
         vector<int> seq;
         int totalStamped=0,currStamped=1;   // just to start while loop
         while(currStamped){
