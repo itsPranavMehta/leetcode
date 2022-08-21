@@ -1,5 +1,6 @@
 class Solution {
-public:
+    
+private:
     string posn(string n,int x){    // try to maximise the magnitude
         for(int i=0;i<n.size();i++){
             if(n[i]<x+'0'){
@@ -20,6 +21,8 @@ public:
         n.push_back('0'+x);
         return n;
     }
+    
+public:
     string maxValue(string n, int x) {
         if(n[0]=='-')   return negn(n,x);
         return posn(n,x);
