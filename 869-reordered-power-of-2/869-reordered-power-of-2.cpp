@@ -27,8 +27,8 @@ private:
         int best_ans=0;
         while(l<=r){
             int m=(l+r+1)/2;
-            if(countDigs(pow(2,m))>=n){
-                best_ans=pow(2,m);
+            if(countDigs(1<<m)>=n){
+                best_ans=1<<m;
                 r=m-1;
             }
             else{
