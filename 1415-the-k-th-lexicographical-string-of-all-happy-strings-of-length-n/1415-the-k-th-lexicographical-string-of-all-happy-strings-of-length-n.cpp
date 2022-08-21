@@ -1,27 +1,21 @@
 class Solution {
 public:
-    void possiblePermutation(int n,string& curr,vector<string>& allPermutations){
-        if(n==curr.size()){
-            allPermutations.push_back(curr);
-            return;
+    string getHappyString(int n, int& k,char last_ch='z',string curr="") { // just a default wrong entry
+        if(curr.size()==n){
+            k--;
+            if(k==0)    return curr;
+            return "";
         }
-        vector<char> chars={'a','b','c'};
-        for(auto& c:chars){
-            if(!curr.size() || curr.back()!=c){
+        for(char c='a';c<='c';c++){
+            if(c!=last_ch){
                 curr.push_back(c);
-                possiblePermutation(n,curr,allPermutations);
+                string ans=getHappyString(n,k,c,curr);
+                if(ans!="") return ans;
                 curr.pop_back();
             }
         }
-    }
-    string getHappyString(int n, int k) {
-        // considering the constraint- brute force should work but this should have a easy mathematical solution as well...
-        vector<string> allPermutations;
-        string currPerm;
-        possiblePermutation(n,currPerm,allPermutations);
-        sort(allPermutations.begin(),allPermutations.end());
+        return "";
         
-        return allPermutations.size()>=k? allPermutations[k-1]:"";
         
     }
 };
