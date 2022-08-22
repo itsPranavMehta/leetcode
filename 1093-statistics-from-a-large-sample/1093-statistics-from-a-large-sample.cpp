@@ -15,7 +15,7 @@ public:
                     mostOccured=c;
                     mode=idx;
                 }
-                if(c*2+numNonZero>=readings && median==-1){
+                if(median==-1 && c*2+numNonZero>=readings){
                     if(c*2+numNonZero==readings)    median=(idx+0.0)/2;
                     else median=idx;
                 }
