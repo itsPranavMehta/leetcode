@@ -2,7 +2,7 @@ class Solution {
 public:
     int minimumTime(string s) {
         int n=s.size();
-        int dp[n];      // dp[i] represents minimum number of moves required to delete all 1s upto dp[i] without considering deletion from left;
+        int dp[n];      // dp[i] represents minimum number of moves required to delete all 1s upto dp[i] without considering deletion from the right.
         dp[0]=s[0]=='1'?1:0;
         int min_moves=n;
         for(int idx=1;idx<n;idx++){
