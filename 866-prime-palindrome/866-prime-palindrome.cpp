@@ -27,6 +27,7 @@ private:
         }
         return 1;
     }
+    
     string buildFirstPal(string& s){
         int l=s.size()/2-1;
         bool isSmaller=false;   // to be set true if the string being formed is becoming less than original
@@ -35,7 +36,6 @@ private:
         else if(s[l]<s[s.size()-l-1]){
             isSmaller=true;
         }
-        // cout<<l<<"\n";
         while(l>=0){
             s[s.size()-l-1]=s[l];
             l--;
@@ -50,7 +50,6 @@ private:
                         s[s.size()-l-1]++;
                         fill(s.begin()+l+1,s.begin()+s.size()-l-1,'0'); //make all inner elements 0
                     }
-                    // cout<<"again: "<<s<<'\n';
                     break;
                 }
                 l--;
@@ -58,17 +57,15 @@ private:
         }
         return s;
     }
+    
+    
 public:
     int primePalindrome(int n) {
         // I can check for prime in sqrt(n), also number of palindromes are pretty less hence it would e
         string s=to_string(n);
-        
-        // cout<<s<<'\n';
         s=buildFirstPal(s);
         int count=0;
-        // cout<<s<<"\n";
         while(!isPrime(s)){
-            // cout<<s<<"\n";
             s=buildNextPalindrome(s);
         }
         return stoi(s);
