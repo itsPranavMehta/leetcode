@@ -22,7 +22,6 @@ public:
         
         if(fast)    slow=slow->next;
         while(slow){
-            // cout<<slow->val<< " "<<rev->val<<"\n";
             if(slow->val!=rev->val) return 0;
             slow=slow->next;
             rev=rev->next;
