@@ -1,17 +1,8 @@
 class Solution {
-private:
-    bool poss(vector<int>& validNums,int n,int idx=0,int sum=0){
-        if(idx==validNums.size() || sum==n)  return sum==n;
-        if(sum+validNums[idx]>n)    return 0;
-        return poss(validNums,n,idx+1,sum+validNums[idx]) || poss(validNums,n,idx+1,sum);
-    }
 public:
-    bool checkPowersOfThree(int n) {
-        vector<int> validNums;
-        for(int i=0;pow(3,i)<=n;i++){
-            validNums.push_back(pow(3,i));
-        }
-        return poss(validNums,n);
+    bool checkPowersOfThree(int n,int p=0,int idx=0){
+        if(n<=p || p+pow(3,idx)>n)    return n==p;
+        return checkPowersOfThree(n,p+pow(3,idx),idx+1)    || checkPowersOfThree(n,p,idx+1);
         
         
     }
