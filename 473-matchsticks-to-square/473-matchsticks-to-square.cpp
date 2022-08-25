@@ -5,7 +5,6 @@ private:
         for(auto& i:sides)  if(i>a) return 0;
         if(idx==matchsticks.size()) return 1;
         
-        
         sides[0]+=matchsticks[idx];
         if(makeSquareHelper(sides,a,matchsticks,idx+1)) return 1;
         sides[0]-=matchsticks[idx];
