@@ -1,22 +1,34 @@
 class Solution {
-public:
-int dp[1001][1001] = {};
-int dfs(vector<vector<int>> &cnt, string &t, int i, int j) {
-    if (j >= t.size())
-        return 1;
-    if (dp[i][j] == 0) {
-        dp[i][j] = 1;
-        for (int k = i; k + (t.size() - j) <= cnt.size(); ++k)
-            if (cnt[k][t[j] - 'a'])
-                dp[i][j]  = ((long)cnt[k][t[j] - 'a'] * dfs(cnt, t, k + 1, j + 1) + dp[i][j]) % 1000000007;
+private:
+    int construct(vector<vector<int>>& mp,string& target,int idx, int used, int dp[1001][1001],int n){
+        if(idx==target.size())  return 1;
+        if(dp[idx][used]!=-1)   return dp[idx][used];
+        
+        int ways=0,mod=1e9+7;
+        
+        for(int i=used;i<n-(target.size()-idx-1);i++){
+            if(mp[i][target[idx]-'a']!=0){
+                ways+=(1ll*mp[i][target[idx]-'a']*construct(mp,target,idx+1,i+1,dp,n))%mod;
+                ways%=mod;
+            }
+        }
+                
+        return dp[idx][used]=ways;
+        
     }
-    return dp[i][j] - 1;
-}
-int numWays(vector<string>& words, string target) {
-    vector<vector<int>> cnt(words[0].size(), vector<int>(26));
-    for (auto &w : words)
-        for (auto i = 0; i < w.size(); ++i)
-            ++cnt[i][w[i] - 'a'];
-    return dfs(cnt, target, 0, 0);
-}
+public:
+    int numWays(vector<string>& words, string target) {
+        int n=words[0].size(),sz=target.size();
+        vector<vector<int>> mp(n,vector<int>(26,0));       //chars and corresponding locs;
+        int mx_size=0;
+        for(auto& word:words){
+            for(int idx=0;idx<word.size();idx++){
+                mp[idx][word[idx]-'a']++;
+            }
+        }
+        int dp[1001][1001];
+        memset(dp,-1,sizeof dp);
+        return construct(mp,target,0,0,dp,n);
+        
+    }
 };
