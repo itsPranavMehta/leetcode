@@ -11,8 +11,8 @@ public:
                 }
                 set<int> sumsRecorded;
                 sumsRecorded.insert(0);
-                int currSum=0;
-                for(int row=0;row<n;row++){
+                
+                for(int row=0,currSum=0;row<n;row++){
                     
                     currSum+=sums[row];
                     auto it=sumsRecorded.lower_bound(currSum-k);
