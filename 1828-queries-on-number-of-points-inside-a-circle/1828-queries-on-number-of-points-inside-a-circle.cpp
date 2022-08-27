@@ -4,6 +4,7 @@ private:
         return (x2-x1)*(x2-x1)+(y2-y1)*(y2-y1);
     }
 public:
+    // can reduce "average complexity" by sorting points on the basis of either x or y coords (say x). and then for any query just searching for points which lie within [x1-r,x1+r]
     vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) {
         vector<int> res;
         for(auto& q:queries){
