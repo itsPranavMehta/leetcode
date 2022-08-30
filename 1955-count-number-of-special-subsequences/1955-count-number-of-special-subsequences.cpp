@@ -1,6 +1,7 @@
 class Solution {
 public:
     int countSpecialSubsequences(vector<int>& nums) {
+        // populate this!
         vector<int> dp={0,0,0};
         for(auto& num:nums){
             dp[num]+=(dp[num]+(num>0?dp[num-1]:1))%1000000007;
