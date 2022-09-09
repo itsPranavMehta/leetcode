@@ -7,7 +7,7 @@ public:
         for(int idx=1;idx<properties.size();idx++){
             int defence=properties[idx][1];
             
-            if(properties[idx][0]!=properties[idx-1][0])        //if previous data was different then use it to change
+            if(properties[idx][0]!=properties[idx-1][0])        //if previous attack was different then use it to change
             {
                 maxDefence=max(maxDefence,temporaryStoreForDefence);
             }
