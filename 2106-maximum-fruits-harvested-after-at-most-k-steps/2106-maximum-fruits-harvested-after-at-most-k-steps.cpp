@@ -1,19 +1,19 @@
 //okay so the solution would involve moving either of these 2 possibilites
 // moving x steps to right and then k-2*x steps to left 
 // moving x steps to left and then k-2*x steps to right
+// === where x is in range(0,k);
 class Solution {
 public:
     int maxTotalFruits(vector<vector<int>>& fruits, int startPos, int k) {
-        int n=fruits.size();
-        int LastPoint=fruits[n-1][0];
+        int n=fruits.size(), LastPoint=fruits[n-1][0];
         
-        vector<int> PreSum(LastPoint+1,0);
+        vector<int> PreSum(LastPoint+1,0);          // Populate PreSum
         for(auto& pos: fruits)  PreSum[pos[0]]=pos[1];
         for(int i=1;i<=LastPoint;i++)   PreSum[i]+=PreSum[i-1];
         
         int res=0;
         
-        if(startPos>LastPoint){
+        if(startPos>LastPoint){             // moving from startPos to the LastPoint at least so that it's in the circle
             k-=(startPos-LastPoint);
             startPos=LastPoint;
         }
