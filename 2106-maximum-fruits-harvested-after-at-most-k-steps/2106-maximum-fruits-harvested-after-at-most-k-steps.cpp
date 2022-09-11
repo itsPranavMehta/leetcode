@@ -2,6 +2,7 @@
 // moving x steps to right and then k-2*x steps to left 
 // moving x steps to left and then k-2*x steps to right
 // === where x is in range(0,k);
+// there's a better solution to it as well -> stand at startPos in the fruits vector itself and then traverse accordingly but nevermind :) this works too because of the complexity!
 class Solution {
 public:
     int maxTotalFruits(vector<vector<int>>& fruits, int startPos, int k) {
