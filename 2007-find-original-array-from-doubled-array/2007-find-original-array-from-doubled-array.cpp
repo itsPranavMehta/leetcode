@@ -13,8 +13,7 @@ public:
                 originalArray.push_back(i);
             }
         }
-        for(auto& i:cancel)  if(i.second!=0) return {};
-        return originalArray;
+        return originalArray.size()*2==changed.size()?originalArray:vector<int>();
         
     }
 };
