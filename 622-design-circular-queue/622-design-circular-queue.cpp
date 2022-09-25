@@ -3,7 +3,7 @@ public:
     vector<int> ls;
     int count,rear,front,sz;
     
-    MyCircularQueue(int k):ls(k,0), count(0),front(0),rear(-1),sz(k) {
+    MyCircularQueue(int k):ls(k), count(0),front(0),rear(-1),sz(k) {
     }
     
     bool enQueue(int value) 
