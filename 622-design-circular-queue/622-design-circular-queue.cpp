@@ -1,49 +1,45 @@
 class MyCircularQueue {
 public:
-    vector<int> vec;
-    int front,rear,sz,curr;
-    MyCircularQueue(int k) {
-        vec.assign(k,0);
-        front=0;
-        rear=0;
-        sz=k;
-        curr=0;
+    vector<int> ls;
+    int count,rear,front,sz;
+    
+    MyCircularQueue(int k):ls(k,0), count(0),front(0),rear(-1),sz(k) {
     }
     
-    bool enQueue(int value) {
-        if(isFull())  return 0;
-        vec[rear++]=value;
-        rear%=sz;
-        curr++;
-        return 1;
+    bool enQueue(int value) 
+    {
+        if(count==sz)   return false;
+        rear=(rear+1+sz)%sz;
+        ls[rear]=value;
+        count++;
+        return true;
     }
     
-    bool deQueue() {
-        if(isEmpty()) return 0;
-        front++;
-        curr--;
-        front%=sz;
-        return 1;
+    bool deQueue() 
+    {
+        if(count==0)    return false;
+        count--;
+        front=(front+1+sz)%sz;
+        return true;
     }
     
-    int Front() {
-        if(curr==0) return -1;
-        return vec[front];
+    int Front() 
+    {
+        return isEmpty()?-1:ls[front];
     }
     
     int Rear() {
+        return isEmpty()?-1:ls[rear];
         
-        if(curr==0) return -1;
-        return vec[(rear-1+sz)%sz];
     }
     
-    bool isEmpty() {
-        return curr==0;
+    bool isEmpty() 
+    {
+        return count==0;    
     }
     
     bool isFull() {
-        
-        return curr==sz;
+        return count==sz;
     }
 };
 
