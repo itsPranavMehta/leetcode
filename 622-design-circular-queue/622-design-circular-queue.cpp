@@ -9,7 +9,7 @@ public:
     bool enQueue(int value) 
     {
         if(count==sz)   return false;
-        rear=(rear+1+sz)%sz;
+        rear=(rear+1)%sz;
         ls[rear]=value;
         count++;
         return true;
@@ -19,7 +19,7 @@ public:
     {
         if(count==0)    return false;
         count--;
-        front=(front+1+sz)%sz;
+        front=(front+1)%sz;
         return true;
     }
     
