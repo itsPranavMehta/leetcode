@@ -27,11 +27,11 @@ class Solution {
   public:
     vector<int> maximumValue(Node* node) {
         queue<Node*> q;
-        q.push(node);
+        q.push(node);       // node is root!
         vector<int> res;
         
-        while(q.size()){
-            int sz=q.size(),mx=0;
+        while(!q.empty()){
+            int sz=q.size(),mx=0;       // sz is number of nodes at that level 
             while(sz--){
                 node=q.front();
                 q.pop();
