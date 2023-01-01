@@ -17,8 +17,7 @@ private:
     int modIn(int x,int p=1e9+7){       // uses fermat little thm.
         return power(x,p-2);  
     }
-    
-    
+
 	public:
 	int compute_value(int n)
 	{
