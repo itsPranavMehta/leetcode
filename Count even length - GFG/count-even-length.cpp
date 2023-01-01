@@ -24,8 +24,8 @@ private:
 	{
 	    int p=1e9+7,res=1;      // nc0 =1 so storing it
 	    int ncr=1;  // nc0
-	    for(int i=1;i<=n;i++){// ncr =(( n+1-r)/r)*nC(r-1)
-	        ncr=(((1ll*(n-i+1)*ncr)%p)*modIn(i))%p;
+	    for(int r=1;r<=n;r++){// ncr =(( n+1-r)/r)*nC(r-1)
+	        ncr=(((1ll*(n-r+1)*ncr)%p)*modIn(r))%p;
 	        res=(res+1ll*ncr*ncr)%p;
 	    }
 	    return res;
