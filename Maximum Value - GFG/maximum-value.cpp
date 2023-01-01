@@ -31,19 +31,13 @@ class Solution {
         vector<int> res;
         
         while(q.size()){
-            int sz=q.size();
-            int mx=0;
+            int sz=q.size(),mx=0;
             while(sz--){
                 node=q.front();
                 q.pop();
                 mx=max(mx,node->data);
-                if(node->left){
-                    q.push(node->left);
-                }
-                if(node->right){
-                    q.push(node->right);
-                    
-                }
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
             }
             res.push_back(mx);
         }
