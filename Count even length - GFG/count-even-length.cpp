@@ -5,7 +5,6 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 private:
-    int fac[100005];
     int power(int x,int y,int p=1e9+7){
         long long res=1;
         while(y>0){
@@ -15,23 +14,19 @@ private:
         }
         return res;
     }
-    int modIn(int x,int p=1e9+7){
-        return power(x%p,p-2);
+    int modIn(int x,int p=1e9+7){       // uses fermat little thm.
+        return power(x,p-2);  
     }
-    int ncr(int n,int r,int p=1e9+7){
-        return ((1ll*fac[n]*modIn(fac[n-r]))%p)*modIn(fac[r])%p;
-    }
+    
+    
 	public:
 	int compute_value(int n)
 	{
-	    memset(fac,0,(n+1)*(sizeof(int)) );
-	    fac[0]=1;
-	    int p=1e9+7,res=0;
-	    for(int i=1;i<=n;i++)    fac[i]=(1ll*i*fac[i-1])%p;
-	    
-	    for(int i=0;i<=n;i++){
-	        long long v=ncr(n,i);
-	        res=(res+1ll*v*v)%p;
+	    int p=1e9+7,res=1;      // nc0 =1 so storing it
+	    int ncr=1;
+	    for(int i=1;i<=n;i++){// ncr =(( n+1-r)/r)*nC(r-1)
+	        ncr=(((1ll*(n-i+1)*ncr)%p)*modIn(i))%p;
+	        res=(res+1ll*ncr*ncr)%p;
 	    }
 	    return res;
 	}
