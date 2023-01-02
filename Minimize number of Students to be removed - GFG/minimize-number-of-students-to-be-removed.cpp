@@ -12,15 +12,20 @@ class Solution {
         vector<int> dp(N+1,INT_MAX);
         dp[0]=INT_MIN;
         for(int i=0;i<N;i++){
+            // len 
+            // len -> idx
             int j=distance(dp.begin(),upper_bound(dp.begin(),dp.end(),H[i]));
                 if(H[i]>dp[j-1] && H[i]<dp[j]){
                     dp[j]=H[i];
             }
         }
         int res=0;
-        for(int i=1;i<=N;i++){
+        for(int i=1;i<=N;i++){      // i-> len of the LIS
             if(dp[i]!=INT_MAX)  res=max(res,i);
         }
+        // what the lenght of my LIS is... 
+        // N-res            --> N ... x students 
+        // N-x!
         return N-res;
     }
 };
