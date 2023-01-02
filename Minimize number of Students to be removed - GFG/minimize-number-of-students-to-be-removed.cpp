@@ -14,7 +14,7 @@ class Solution {
         for(int i=0;i<N;i++){
             // len 
             // len -> idx
-            int j=distance(dp.begin(),upper_bound(dp.begin(),dp.end(),H[i]));
+            int j=upper_bound(dp.begin(),dp.end(),H[i])-dp.begin();
                 if(H[i]>dp[j-1] && H[i]<dp[j]){
                     dp[j]=H[i];
             }
