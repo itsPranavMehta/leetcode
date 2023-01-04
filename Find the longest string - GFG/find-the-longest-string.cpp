@@ -21,10 +21,14 @@ public:
         for(auto& word: words){
             if(word.size()==1 || (seen.count(word.substr(0,word.size()-1)))){
                 seen.insert(word);
-                if(res.size()<word.size())  res=word;
+                if(res.size()<word.size()){
+                    res=word;
+                }
             }
+            
         }
         return res;
+        // code here
     }
 };
 
