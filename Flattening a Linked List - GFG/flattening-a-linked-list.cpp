@@ -50,52 +50,31 @@ public:
 
 Node* merge(Node* a, Node* b){
 
-    Node* temp= new Node(0);
-
+    Node* temp= new Node(0);        // dummy value 
     Node* newhead=temp;
-
     while(a!=NULL && b!=NULL){
-
-           if(a->data<b->data){
-
+           if(a->data < b->data){
                temp->bottom=a;
-
-               a=a->bottom;
-
+               a=a->bottom;         // this 
                temp=temp->bottom;
-
            } 
-
            else{
-
                temp->bottom=b;
-
                b=b->bottom;
-
                temp=temp->bottom;
-
            } }
 
-        if(a!=NULL){
+        if(a!=NULL) temp->bottom=a;
+        else    temp->bottom=b;
 
-            temp->bottom=a;
-
-        }
-
-        else{
-
-            temp->bottom=b;
-
-        }
-
-        return newhead->bottom;}
+        return newhead->bottom;
+    
+}
 
     Node *flatten(Node *root)
 
     {
-
-       if(root==NULL || root->next==NULL){
-           return root;} 
+       if(root==NULL || root->next==NULL)   return root;
        root->next=flatten(root->next);
 
        root=merge(root, root->next); 
