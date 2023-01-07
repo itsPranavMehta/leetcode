@@ -9,10 +9,13 @@ using namespace std;
 class Solution {
   public:
     long long countPairs(int n, int arr[], int k) {
-        vector<int> mods(k,0);
+        vector<int> mods(k,0);      
         long long res=0;
         for(int i=0;i<n;i++){
-            res+=1ll*mods[arr[i]%k];
+            res+=mods[arr[i]%k];        // other elements that I have seen to the left 
+            // of it having a similar mod value......
+            // another element with same mod comes .. 
+            
             mods[arr[i]%k]++;
         }
         return res;
